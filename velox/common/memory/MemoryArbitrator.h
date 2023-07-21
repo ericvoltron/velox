@@ -244,7 +244,7 @@ class MemoryReclaimer {
 
 template <>
 struct fmt::formatter<facebook::velox::memory::MemoryArbitrator::Kind> : formatter<std::string> {
-  auto format(facebook::velox::memory::MemroyArbitrator::kind k, format_context& ctx) {
+  auto format(facebook::velox::memory::MemoryArbitrator::kind k, format_context& ctx) {
     return formatter<std::string>::format(facebook::velox::memory::MemoryArbitrator::kindString(k), ctx);
   }
 };
