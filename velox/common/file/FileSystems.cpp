@@ -165,7 +165,7 @@ class LocalFileSystem : public FileSystem {
         ec.value(),
         "Rmdir {} failed: {}, message: {}",
         path,
-        ec,
+        ec.value(),
         ec.message());
   }
 
