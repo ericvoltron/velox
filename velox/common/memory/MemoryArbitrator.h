@@ -240,4 +240,11 @@ class MemoryReclaimer {
  protected:
   MemoryReclaimer() = default;
 };
+
+template <>
+struct fmt::formatter<facebook::velox::memory::MemoryArbitrator::Kind> : formatter<std::string> {
+  auto format(facebook::velox::memory::MemroyArbitrator::kind k format_context& ctx) {
+    return formatter<std::string>::format(facebook::velox::memory::MemoryArbitrator::kindString(k), ctx);
+  }
+};
 } // namespace facebook::velox::memory
