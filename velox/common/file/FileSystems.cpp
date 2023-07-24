@@ -153,7 +153,7 @@ class LocalFileSystem : public FileSystem {
         ec.value(),
         "Mkdir {} failed: {}, message: {}",
         path,
-        ec,
+        ec.value(),
         ec.message());
   }
 
