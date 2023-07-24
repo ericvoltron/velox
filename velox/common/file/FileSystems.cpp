@@ -164,8 +164,8 @@ class LocalFileSystem : public FileSystem {
         0,
         ec.value(),
         "Rmdir {} failed: {}, message: {}",
-        path,
-        ec,
+        std::string{path},
+        ec.value(),
         ec.message());
   }
 
