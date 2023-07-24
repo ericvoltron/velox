@@ -152,8 +152,8 @@ class LocalFileSystem : public FileSystem {
         0,
         ec.value(),
         "Mkdir {} failed: {}, message: {}",
-        path,
-        ec.value(),
+        std::string{path},
+        ec.value,
         ec.message());
   }
 
