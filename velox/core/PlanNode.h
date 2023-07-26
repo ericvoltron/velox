@@ -2242,3 +2242,10 @@ class TopNRowNumberNode : public PlanNode {
 };
 
 } // namespace facebook::velox::core
+
+template <>
+struct fmt::formatter<facebook::velox::core::PartitionedOutputNode::Kind> : formatter<std::string> {
+  auto format(facebook::velox::core::PartitionedOutputNode::Kind s, format_context& ctx) {
+    return formatter<std::string>::format(facebook::velox::core::PartitionedOutputNode::kindString(s), ctx);
+  }
+};
