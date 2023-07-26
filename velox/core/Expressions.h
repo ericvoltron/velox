@@ -281,11 +281,11 @@ class FieldAccessTypedExpr : public ITypedExpr {
 
   std::string toString() const override {
     if (inputs().empty()) {
-      return fmt::format("{}", std::quoted(name(), '"', '"'));
+      return fmt::format("{:?}", name());
     }
 
     return fmt::format(
-        "{}[{}]", inputs()[0]->toString(), std::quoted(name(), '"', '"'));
+        "{}[{:?}]", inputs()[0]->toString(), name());
   }
 
   size_t localHash() const override {
