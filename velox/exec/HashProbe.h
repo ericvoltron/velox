@@ -566,11 +566,3 @@ inline std::ostream& operator<<(std::ostream& os, ProbeOperatorState state) {
 }
 
 } // namespace facebook::velox::exec
-
-template <>
-struct fmt::formatter<facebook::velox::exec::ProbeOperatorState>
-    : formatter<std::string> {
-  auto format(facebook::velox::exec::ProbeOperatorState s, format_context& ctx) {
-    return formatter<std::string>::format(facebook::velox::exec::HashProbe::stateName(s), ctx);
-  }
-};
