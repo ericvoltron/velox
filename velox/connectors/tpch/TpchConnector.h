@@ -176,3 +176,17 @@ class TpchConnectorFactory : public ConnectorFactory {
 };
 
 } // namespace facebook::velox::connector::tpch
+
+template <>
+struct fmt::formatter<facebook::velox::connector::tpch::TpchConnectorSplit> : formatter<std::string> {
+  auto format(facebook::velox::connector::tpch::TpchConnectorSplit s, format_context& ctx) {
+    return formatter<std::string>::format(s.toString(), ctx);
+  }
+};
+
+template <>
+struct fmt::formatter<std::shared_ptr<facebook::velox::connector::tpch::TpchConnectorSplit>> : formatter<std::string> {
+  auto format(std::shared_ptr<facebook::velox::connector::tpch::TpchConnectorSplit> s, format_context& ctx) {
+    return formatter<std::string>::format(s->toString(), ctx);
+  }
+};
