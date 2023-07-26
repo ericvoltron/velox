@@ -415,7 +415,7 @@ void Operator::MemoryReclaimer::enterArbitration() {
   // The driver must be alive as the operator is still under memory arbitration
   // processing.
   VELOX_CHECK_NOT_NULL(driver);
-  VELOX_CHECK_EQ(std::this_thread::get_id(), driver->state().thread);
+  VELOX_CHECK_EQ(std::this_thread::get_id(), driver->state().thread.load());
   if (driver->task()->enterSuspended(driver->state()) != StopReason::kNone) {
     // There is no need for arbitration if the associated task has already
     // terminated.
@@ -428,7 +428,7 @@ void Operator::MemoryReclaimer::leaveArbitration() noexcept {
   // The driver must be alive as the operator is still under memory arbitration
   // processing.
   VELOX_CHECK_NOT_NULL(driver);
-  VELOX_CHECK_EQ(std::this_thread::get_id(), driver->state().thread);
+  VELOX_CHECK_EQ(std::this_thread::get_id(), driver->state().thread.load());
   driver->task()->leaveSuspended(driver->state());
 }
 
